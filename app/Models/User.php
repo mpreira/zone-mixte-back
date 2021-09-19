@@ -18,7 +18,9 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'firstname',
+        'lastname',
+        'username',
         'email',
         'password',
     ];
@@ -39,6 +41,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
+        'preferences' => 'array',
+        'first_logged_in' => 'datetime',
+        'last_logged_in' => 'datetime',
         'email_verified_at' => 'datetime',
     ];
 
@@ -55,4 +60,17 @@ class User extends Authenticatable
     public function comments(){
         return $this->hasMany(Comment::class, 'user_comment');
     }
+
+    /**
+     * Hash password when needed.
+     * @param  string  $password
+     * @return void
+     */
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = Hash::needsRehash($password)
+            ? Hash::make($password)
+            : $password;
+    }
+
 }
