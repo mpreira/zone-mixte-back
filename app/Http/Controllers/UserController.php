@@ -8,6 +8,38 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
+     * @var string
+     */
+    protected $slug = 'user';
+
+    /**
+     * @var string
+     */
+    protected $route = 'users';
+
+    /**
+     * @var array
+     */
+    protected $rules = [
+        'create' => [
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|string|email|unique:users,email',
+            'username' => 'required|string|unique',
+        ],
+        'update' => [
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|string|email|unique:users,email',
+        ],
+    ];
+
+    /**
+     * @var boolean
+     */
+    protected $searchable = true;
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -82,4 +114,6 @@ class UserController extends Controller
     {
         //
     }
+
+
 }
