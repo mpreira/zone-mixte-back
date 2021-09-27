@@ -27,13 +27,14 @@ class Publication extends Model
      */
     protected $casts = [
         'published_at' => 'datetime',
+        'updated_at' => 'datetime'
     ];
 
     /**
      * get the publication's user
      */
     public function user(){
-        return $this->belongsTo(User::class, 'publication_user');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
@@ -66,6 +67,13 @@ class Publication extends Model
      * get the publication's categories
      */
     public function categories(){
-        return $this->belongsToMany(Category::class, 'publication_category');
+        return $this->belongsToMany(Category::class, 'category_id');
+    }
+
+    /**
+     * get the publication's categories
+     */
+    public function sports(){
+        return $this->belongsTo(Sports::class, 'sports_id');
     }
 }

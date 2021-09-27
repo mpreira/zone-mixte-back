@@ -39,6 +39,6 @@ class Comment extends Model
      * get the comment's user
      */
     public function user(){
-        return $this->belongsTo(User::class, 'comment_user');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

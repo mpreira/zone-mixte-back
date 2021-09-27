@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -18,8 +19,6 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'firstname',
-        'lastname',
         'username',
         'email',
         'password',
@@ -66,11 +65,11 @@ class User extends Authenticatable
      * @param  string  $password
      * @return void
      */
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = Hash::needsRehash($password)
-            ? Hash::make($password)
-            : $password;
-    }
+//    public function setPasswordAttribute($password)
+//    {
+//        $this->attributes['password'] = Hash::needsRehash($password)
+//            ? Hash::make($password)
+//            : $password;
+//    }
 
 }
