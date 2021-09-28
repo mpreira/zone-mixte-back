@@ -15,7 +15,17 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->morphs('publishable');
+            $table->string('title');
+            $table->text('description');
+            $table->foreignId('category_id')
+                  ->constrained('categories')
+                  ->onUpdate('cascade')
+                  ->onDelete('cascade');
+            $table->foreignId('user_id')
+                  ->constrained('users')
+                  ->onUpdate('cascade')
+                  ->onDelete('cascade');
+            $table->unsignedBigInteger('sport_id');
             $table->string('image');
             $table->text('content');
             $table->timestamps();

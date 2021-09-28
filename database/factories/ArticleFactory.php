@@ -22,10 +22,13 @@ class ArticleFactory extends Factory
     public function definition()
     {
         return [
+            'title' => $this->faker->sentence(),
+            'description' => $this->faker->paragraph(),
+            'category_id' => 1,
+            'user_id' => 1,
+            'sport_id' => $this->faker->numberBetween($min = 1, $max = 6),
             'image' => $this->faker->imageUrl($width = 640, $height = 480),
             'content' => $this->faker->paragraphs($nb = 4, $asText = true),
-            'publishable_type' => ('Article'),
-            'publishable_id' => 1
         ];
     }
 }

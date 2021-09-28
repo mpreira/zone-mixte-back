@@ -22,9 +22,12 @@ class VideoFactory extends Factory
     public function definition()
     {
         return [
+            'title' => $this->faker->sentence(),
+            'description' => $this->faker->paragraph(),
+            'category_id' => 2,
+            'user_id' => 1,
+            'sport_id' => $this->faker->numberBetween($min = 1, $max = 6),
             'video' => $this->faker->imageUrl($width = 640, $height = 480),
-            'publishable_type' => ('Video'),
-            'publishable_id' => 2
         ];
     }
 }

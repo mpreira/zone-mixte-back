@@ -17,4 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//sports
 Route::middleware(['cors'])->get('/sports', [\App\Http\Controllers\ApiController::class, 'listSports']);
+Route::middleware(['cors'])->get('/sports/{id}', [\App\Http\Controllers\ApiController::class, 'uniqueSport']);
+
+//articles
+Route::middleware(['cors'])->get('/articles', [\App\Http\Controllers\ApiController::class, 'listArticles']);
+Route::middleware(['cors'])->get('/articles/{id}', [\App\Http\Controllers\ApiController::class, 'uniqueArticle']);

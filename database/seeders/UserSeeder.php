@@ -21,5 +21,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('ZM2021'),
             'email_verified_at' => now(),
         ]);
+
+        $users = User::factory()->count(5)->create();
     }
 }

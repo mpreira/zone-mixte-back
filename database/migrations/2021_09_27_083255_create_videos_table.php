@@ -15,7 +15,14 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
-            $table->morphs('publishable');
+            $table->string('title');
+            $table->text('description');
+            $table->unsignedBigInteger('category_id');
+            $table->foreignId('user_id')
+                  ->constrained('users')
+                  ->onUpdate('cascade')
+                  ->onDelete('cascade');
+            $table->unsignedBigInteger('sport_id');
             $table->string('video');
             $table->timestamps();
         });

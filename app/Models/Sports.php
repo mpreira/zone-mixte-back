@@ -17,13 +17,21 @@ class Sports extends Model
     protected $fillable = [
         'name',
         'description',
-        'image'
+        'image',
+        'color',
     ];
 
     /**
      * get the sports' publications
      */
-    public function publication(){
-        return $this->hasMany(Publication::class, 'publication_id');
+    public function articles(){
+        return $this->hasMany(Article::class);
+    }
+
+    /**
+     * get the sports' publications
+     */
+    public function videos(){
+        return $this->hasMany(Video::class);
     }
 }
