@@ -32,6 +32,13 @@ class Article extends Model
     ];
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['sport', 'user', 'comments', 'category'];
+
+    /**
      *
      *
      */
@@ -44,7 +51,7 @@ class Article extends Model
      *
      */
     public function category(){
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     /**
@@ -52,7 +59,7 @@ class Article extends Model
      *
      */
     public function sport(){
-        return $this->hasOne(Sports::class);
+        return $this->belongsTo(Sports::class);
     }
 
     /**
@@ -60,6 +67,6 @@ class Article extends Model
      *
      */
     public function user(){
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 }

@@ -16,7 +16,7 @@ class CreateVideosTable extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
+            $table->text('summary');
             $table->unsignedBigInteger('category_id');
             $table->foreignId('user_id')
                   ->constrained('users')

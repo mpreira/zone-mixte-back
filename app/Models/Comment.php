@@ -15,7 +15,10 @@ class Comment extends Model
      * @var string[]
      */
     protected $fillable = [
-      'message',
+        'username',
+        'message',
+        'commentable_id',
+        'commentable_type',
     ];
 
     /**
@@ -28,6 +31,13 @@ class Comment extends Model
     ];
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+//    protected $with = ['user'];
+
+    /**
      * Get the parent commentable model (post or video).
      */
     public function commentable()
@@ -38,7 +48,7 @@ class Comment extends Model
     /**
      * get the comment's user
      */
-    public function user(){
-        return $this->belongsTo(User::class, 'user_id');
-    }
+//    public function user(){
+//        return $this->belongsTo(User::class, 'user_id');
+//    }
 }

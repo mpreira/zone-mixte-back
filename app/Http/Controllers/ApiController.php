@@ -14,6 +14,17 @@ use Illuminate\Http\Request;
 class ApiController extends Controller
 {
     /**
+     *
+     */
+    public function listUsers(){
+        return response()->json(User::all());
+    }
+
+    public function uniqueUser($id){
+        return response()->json(User::find($id));
+    }
+
+    /**
      * @return \Illuminate\Http\JsonResponse
      * sports
      */
@@ -34,5 +45,27 @@ class ApiController extends Controller
 
     public function uniqueArticle($id){
         return response()->json(Article::find($id));
+    }
+
+    /**
+     * videos
+     */
+    public function listVideos(){
+        return response()->json(Video::all());
+    }
+
+    public function uniqueVideo($id){
+        return response()->json(Video::find($id));
+    }
+
+    /**
+     * comments
+     */
+    public function listComments(){
+        return response()->json(Comment::all());
+    }
+
+    public function uniqueComment($id){
+        return response()->json(Comment::find($id));
     }
 }

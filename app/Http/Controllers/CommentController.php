@@ -3,10 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Repositories\Comment\CommentRepository;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    /**
+     * @var CommentRepository
+     */
+    private $comments;
+
+    public function __construct(CommentRepository $comments)
+    {
+        $this->comments = $comments;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,27 +26,19 @@ class CommentController extends Controller
     public function index()
     {
         //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     *
      */
     public function store(Request $request)
     {
-        //
+        $comment = $this->comments->create($request->all());
+        return response()->json($comment);
     }
 
     /**

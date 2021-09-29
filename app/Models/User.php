@@ -51,15 +51,15 @@ class User extends Authenticatable
      * get the user's roles
      */
     public function roles(){
-        return $this->hasMany(Role::class, 'user_role');
+        return $this->belongsToMany(Role::class, 'user_role');
     }
 
-    /**
-     * get the user's comments
-     */
-    public function comments(){
-        return $this->hasMany(Comment::class, 'user_comment');
-    }
+//    /**
+//     * get the user's comments
+//     */
+//    public function comments(){
+//        return $this->hasMany(Comment::class, 'user_comment');
+//    }
 
     /**
      * Hash password when needed.

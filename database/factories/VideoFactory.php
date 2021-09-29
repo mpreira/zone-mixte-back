@@ -23,7 +23,7 @@ class VideoFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(),
-            'description' => $this->faker->paragraph(),
+            'summary' => $this->faker->paragraph(),
             'category_id' => 2,
             'user_id' => 1,
             'sport_id' => $this->faker->numberBetween($min = 1, $max = 6),
